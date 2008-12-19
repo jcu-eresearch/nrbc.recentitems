@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="nrbc.portlet.recentitems">
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <genericsetup:registerProfile
+       name="default"
+       title="Relative Recent Portlet"
+       directory="profiles/default"
+       description="A customised portlet which only shows recent changes that are local to the given folderish type"
+       provides="Products.GenericSetup.interfaces.EXTENSION"
+       />
+
+     <!-- Register the portlet -->
+
+     <!-- If the portlet has no configurable parameters, you can remove
+          the EditForm declaration in nrbcrecentchanges.py and delete
+          the 'editview' attribute from this statement.
+       -->
+
+     <plone:portlet
+         name="nrbc.portlet.recentitems.NrbcRecentChanges"
+         interface=".nrbcrecentchanges.INrbcRecentChanges"
+         assignment=".nrbcrecentchanges.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".nrbcrecentchanges.Renderer"
+         addview=".nrbcrecentchanges.AddForm"
+         editview=".nrbcrecentchanges.EditForm"
+         />
+
+</configure>

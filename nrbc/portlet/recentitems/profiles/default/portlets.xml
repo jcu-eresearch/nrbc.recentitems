@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="nrbc.portlet.recentitems.NrbcRecentChanges"
+   title="Recent Changes"
+   description="A customised portlet which only shows recent changes that are local to the given folderish type"
+   />
+
+</portlets>

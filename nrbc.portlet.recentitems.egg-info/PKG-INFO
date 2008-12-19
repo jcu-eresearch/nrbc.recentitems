@@ -1,0 +1,27 @@
+Metadata-Version: 1.0
+Name: nrbc.portlet.recentitems
+Version: 0.1devdev
+Summary: A customised portlet which only shows recent changes that are local to the given folderish type
+Home-page: http://eresearch.jcu.edu.au/
+Author: David Breitkreutz
+Author-email: david.breitkreutz@jcu.edu.au
+License: GPL
+Description: Introduction
+        ============
+        
+        
+        
+        Changelog
+        =========
+        
+        0.1dev - Unreleased
+        ----------------
+        
+        * Initial release
+        
+        
+Keywords: plone portlet recent items changes
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

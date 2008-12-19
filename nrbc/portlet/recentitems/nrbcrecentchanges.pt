@@ -1,0 +1,64 @@
+<tal:recentlist tal:condition="python:template.getId()!='relative_recently_modified'"
+                tal:define="results1 python:container.portal_catalog(path='/'.join(context.getPhysicalPath()),sort_on='modified',sort_order='reverse');
+			    resultcount view/data/number_of_items;
+                            results python:results1[:(resultcount or 5)];">
+
+<dl class="portlet portletNrbcRecentChanges" id="portlet-recent" tal:define="relativeAddress python:here.absolute_url()+'/relative_recently_modified';"
+ i18n:domain="nrbc.portlet.recentitems" >
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a href="#" 
+            tal:attributes="href string:${relativeAddress}"
+            i18n:translate="box_recent_changes">Recent Changes</a>
+        <span class="portletTopRight"></span>
+    </dt>
+    <tal:items tal:repeat="obj results">
+    <dd class="portletItem"
+        tal:define="oddrow repeat/obj/odd;
+                    plone_view context/@@plone;
+                    item_icon python:plone_view.getIcon(obj);
+                    item_wf_state obj/review_state;
+                    item_wf_state_class python:'state-' + plone_view.normalizeString(item_wf_state);"
+        tal:attributes="class python:(oddrow and 'portletItem even' or 'portletItem odd')">
+        <a href=""
+           tal:attributes="href string:${obj/getURL}/view;
+                           title obj/Description;
+                           class string:$item_wf_state_class tile">
+            <img width="16" height="16"
+                 src="" alt=""
+                 tal:condition="item_icon/url"
+                 tal:attributes="src item_icon/url;
+                                 alt item_icon/description;
+                                 title item_icon/title;
+                                 width item_icon/width;
+                                 height item_icon/height;" />
+            <tal:title content="obj/pretty_title_or_id">
+            Plone 2.1 released!
+            </tal:title>
+            <span class="portletItemDetails"
+                  tal:content="python:plone_view.toLocalizedTime(obj.ModificationDate)"
+                  >May 5</span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        tal:condition="not: results"
+        i18n:translate="box_recent_no_items">
+        No items changed yet.
+    </dd>
+
+    <dd class="portletFooter">
+        <a href="#"
+           class="tile"
+           tal:attributes="href string:${relativeAddress}"
+           i18n:translate="box_more_recently_changed">
+        All recent changes&hellip;
+        </a>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+
+</tal:recentlist>
