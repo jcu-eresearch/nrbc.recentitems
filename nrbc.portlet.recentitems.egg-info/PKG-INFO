@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: nrbc.portlet.recentitems
-Version: 0.1devdev
+Version: 0.1dev
 Summary: A customised portlet which only shows recent changes that are local to the given folderish type
 Home-page: http://eresearch.jcu.edu.au/
 Author: David Breitkreutz
